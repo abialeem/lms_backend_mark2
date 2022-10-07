@@ -1,0 +1,6 @@
+Database: taalimulquran_db
+Username: aabidaleem
+Email: team.electrichamam@gmail.com
+
+
+exports.addProfessor;  exports.getTotalCourses; exports.getTotalWishlist; exports.getTotalEnrollments; exports.getTotalEnrollmentCount; exports.getTotalChapters;
