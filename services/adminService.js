@@ -58,6 +58,158 @@ exports.updateAdmin = async (params) => {
   });
 };
 
+//get all stuff starts here
+exports.getMadrasas = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT *  FROM madrasas `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No madrasas were found", statusCode: 400 });
+          
+        resolve({
+          statusCode: 200,
+          message: `${result.length} madrasas were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+//get all stuff ends here
+        //count of stuff functions starts here
+exports.getMadrasaCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) As Count  FROM madrasas `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No madrasas were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} madrasas were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+exports.getStudentCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) AS Count FROM students `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No students were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} students were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+exports.getCourseCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) AS Count FROM courses `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No courses were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} courses were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+exports.getTeacherCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) AS Count FROM teachers `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No teachers were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} teachers were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+exports.getSubjectCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) AS Count FROM subjects `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No subjects were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} subjects were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+exports.getPrincipalCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) AS Count FROM principals `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No principals were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} principals were found`,
+          data: result,
+        });
+      }
+    );
+  });
+};
+
+
+
+        //count of stuff functions ends here
+
+
 
 exports.getTotalProfessors = async (params) => {
   return new Promise((resolve, reject) => {
@@ -82,7 +234,7 @@ exports.getTotalProfessors = async (params) => {
 exports.getTotalUsers = async (params) => {
   return new Promise((resolve, reject) => {
     db.query(
-      `SELECT COUNT(*) FROM users `,
+      `SELECT * FROM users `,
       (err, result) => {
         if (err) reject({ message: err, statusCode: 500 });
 
@@ -93,6 +245,26 @@ exports.getTotalUsers = async (params) => {
           statusCode: 200,
           message: `${result.length} users were found`,
           data: result,
+        });
+      }
+    );
+  });
+};
+
+exports.getTotalUsersCount = async (params) => {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT COUNT(*) FROM users `,
+      (err, result) => {
+        if (err) reject({ message: err, statusCode: 500 });
+
+        if (result.length === 0)
+          reject({ message: "No users were found", statusCode: 400 });
+
+        resolve({
+          statusCode: 200,
+          message: `${result.length} users were found`,
+          data: result.length,
         });
       }
     );

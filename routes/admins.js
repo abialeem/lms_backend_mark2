@@ -18,7 +18,10 @@ router.post("/addProfessor",adminController.addProfessor);
 router.get("/gettotalprofessors", adminController.gettotalprofessors);
 
 //get Total users
-router.get("/gettotalusers", adminController.gettotalusers); 
+router.get("/gettotalusers", adminController.gettotalusers);  
+
+//get Total users count
+router.get("/gettotaluserscount", adminController.gettotaluserscount);  
 
 //get Total courses
 router.get("/gettotalcourses", adminController.gettotalcourses);
@@ -34,6 +37,31 @@ router.get("/gettotalenrollmentcount", adminController.gettotalenrollmentcount);
 
 //get Total Chapters
 router.get("/gettotalchapters", adminController.gettotalchapters);
+
+
+//get all stuff functions starts here
+
+router.get("/getMadrasas", adminController.getMadrasas);
+
+//get all functions ends here
+
+
+
+//count of stuff routes starts here
+router.get("/getMadrasaCount", adminController.getMadrasaCount);
+
+router.get("/getPrincipalCount", adminController.getPrincipalCount);
+
+router.get("/getTeacherCount", adminController.getTeacherCount);
+
+router.get("/getStudentCount", adminController.getStudentCount);
+
+router.get("/getCourseCount", adminController.getCourseCount);
+
+router.get("/getSubjectCount", adminController.getSubjectCount);
+
+
+//count of stuff routes ends here
 
 
 //update single admin 

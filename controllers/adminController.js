@@ -1,4 +1,4 @@
-const { updateAdmin, addProfessor, getTotalProfessors, getTotalUsers, getTotalCourses, getTotalWishlist, getTotalEnrollments, getTotalEnrollmentCount, getTotalChapters } = require("../services/adminService");
+const { getMadrasaCount,  getPrincipalCount, getTeacherCount, getStudentCount, getCourseCount, getSubjectCount, getMadrasas, updateAdmin, addProfessor, getTotalProfessors, getTotalUsers, getTotalUsersCount,  getTotalCourses, getTotalWishlist, getTotalEnrollments, getTotalEnrollmentCount, getTotalChapters } = require("../services/adminService");
 
 exports.update_admin = async (req, res, next) => {
   const { userid } = req.params;
@@ -46,6 +46,18 @@ exports.update_admin = async (req, res, next) => {
   exports.gettotalusers = async (req, res, next) => {
     const { userId } = req.query;
     getTotalUsers({ userId })
+      .then((result) => {
+        const { message, data } = result;
+        res.status(200).send({ message, data });
+      })
+      .catch((err) => {
+        const { statusCode = 400, message } = err;
+        res.status(statusCode).send({ message }) && next(err);
+      });
+  };
+
+  exports.gettotaluserscount = async (req, res, next) => {
+    getTotalUsersCount()
       .then((result) => {
         const { message, data } = result;
         res.status(200).send({ message, data });
@@ -121,3 +133,96 @@ exports.update_admin = async (req, res, next) => {
       });
   };
 
+//count of stuff functions starts here
+
+exports.getMadrasaCount = async (req, res, next) => {
+  getMadrasaCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+exports.getPrincipalCount = async (req, res, next) => {
+  getPrincipalCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+
+exports.getTeacherCount = async (req, res, next) => {
+  getTeacherCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+
+exports.getStudentCount = async (req, res, next) => {
+  getStudentCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+
+exports.getCourseCount = async (req, res, next) => {
+  getCourseCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+exports.getSubjectCount = async (req, res, next) => {
+  getSubjectCount()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+//count of stuff functions ends here
+
+
+//all get stuff starts here
+exports.getMadrasas = async (req, res, next) => {
+  getMadrasas()
+    .then((result) => {
+      const { message, data } = result;
+      res.status(200).send({ message, data });
+    })
+    .catch((err) => {
+      const { statusCode = 400, message } = err;
+      res.status(statusCode).send({ message }) && next(err);
+    });
+};
+
+//all get stuff ends here
