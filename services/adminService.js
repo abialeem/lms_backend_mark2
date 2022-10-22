@@ -214,7 +214,7 @@ exports.getPrincipalCount = async (params) => {
 exports.getTotalProfessors = async (params) => {
   return new Promise((resolve, reject) => {
     db.query(
-      `SELECT COUNT(*) FROM professors `,
+      `SELECT  * FROM professors `,
       (err, result) => {
         if (err) reject({ message: err, statusCode: 500 });
 

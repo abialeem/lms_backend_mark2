@@ -43,6 +43,20 @@ exports.update_admin = async (req, res, next) => {
       });
   };
 
+
+  exports.gettotalprofessors = async (req, res, next) => {
+    const { userId } = req.query;
+    getTotalProfessors({ userId })
+      .then((result) => {
+        const { message, data } = result;
+        res.status(200).send({ message, data });
+      })
+      .catch((err) => {
+        const { statusCode = 400, message } = err;
+        res.status(statusCode).send({ message }) && next(err);
+      });
+  };
+
   exports.gettotalusers = async (req, res, next) => {
     const { userId } = req.query;
     getTotalUsers({ userId })

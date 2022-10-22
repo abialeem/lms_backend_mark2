@@ -30,6 +30,20 @@ exports.login_professor = async (req, res, next) => {
     });
 };
 
+// GET SINGLE PRODUCT BY ID
+router.get("/:productId", async (req, res) => {
+  const { productId } = req.params;
+  db.query(
+    `SELECT p.id, p.title, p.image, p.images, p.description, p.price, p.quantity, p.short_desc,
+        c.title as category FROM products p JOIN categories c ON
+            c.id = p.cat_id WHERE p.id = ${productId}`,
+    (err, results) => {
+      if (err) console.log(err);
+      else res.json(results[0]);
+    }
+  );
+});
+
 exports.login_admin = async (req, res, next) => {
   const { email, password } = req.body;
 
